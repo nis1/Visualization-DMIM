@@ -1,4 +1,5 @@
 import os
+import uuid
 # We'll render HTML templates and access data sent by POST
 # using the request object from flask. Redirect and url_for
 # will be used to redirect the user once the upload is done
@@ -33,6 +34,10 @@ def index():
 @app.route('/uploads', methods=['POST'])
 def upload():
     print("/uploads - start")
+    hashValue = str(uuid.uuid4())
+    uploadFolder = app.config['UPLOAD_FOLDER']
+    os.mkdir(str(uploadFolder)+"/"+str(hashValue))
+
     # Get the name of the uploaded files
     uploaded_files = request.files.getlist("file[]")
     print(request.files.getlist("file[]"))
@@ -46,7 +51,7 @@ def upload():
             filename = secure_filename(file.filename)
                 # Move the file form the temporal folder to the upload
                 # folder we setup
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            file.save(os.path.join(str(uploadFolder)+"/"+str(hashValue), filename))
                 # Save the filename into a list, we'll use it later
             filenames.append(filename)
             print(filename)
@@ -54,8 +59,9 @@ def upload():
                 # Redirect the user to the uploaded_file route, which
             # will basicaly show on the browser the uploaded file
     # Load an html page with a link to each uploaded file
+
     print("/uploads - end")
-    return render_template('upload.html', filenames=filenames)
+    return render_template('upload.html', filenames=filenames, hashValue = hashValue)
 
 # This route is expecting a parameter containing the name
 # of a file. Then it will locate that file on the upload

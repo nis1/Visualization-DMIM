@@ -16,7 +16,7 @@
    This is a list of the files you just uploaded, click on them to load/download them
    <ul>
     {% for file in filenames %}
-     <li><a href="{{url_for('uploaded_file', filename=file)}}">{{file}}</a></li>
+     <li><a href="{{ url_for('uploaded_file', filename=file) }}">{{file}}</a></li>
     {% endfor %}
    </ul>
    </div>
