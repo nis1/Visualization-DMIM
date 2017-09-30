@@ -61,7 +61,7 @@ def upload():
     # Load an html page with a link to each uploaded file
 
     print("/uploads - end")
-    return render_template('upload.html', filenames=filenames, hashValue = hashValue)
+    return render_template('upload.html', filenames=filenames, hashValue = hashValue, uploadFolder = str(uploadFolder))
 
 # This route is expecting a parameter containing the name
 # of a file. Then it will locate that file on the upload
