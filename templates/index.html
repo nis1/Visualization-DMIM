@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
  <head>
+  <title>upload files</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" rel=stylesheet">
  </head>
  <body>
@@ -15,6 +16,25 @@
     <input type="submit" value="Upload" class="span2">
    </form>
    </div>
-  </div>
+  </head>
+
+  <!--<h3>Online users:{{online_users}} </h3>-->
+
+  <hr/>
+<form action = /new method="POST">
+  <input type="text" name="name"></input>
+  <input type="text" name="description"></input>
+  <input type="submit"></input>
+</form>
+
+
+</form>
+  <ul>
+    {% for file in files %}
+      <li><a href="{{path}}/{{file}}/">{{file}}</a></li>
+    {% endfor %}
+</ul>
+
+
  </body>
 </html>

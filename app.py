@@ -1,20 +1,20 @@
 import os
 import uuid
-# We'll render HTML templates and access data sent by POST
-# using the request object from flask. Redirect and url_for
-# will be used to redirect the user once the upload is done
-# and send_from_directory will help us to send/show on the
-# browser the file that the user just uploaded
 from flask import Flask, render_template, request, redirect, url_for, send_from_directory
 from werkzeug import secure_filename
+from flask_pymongo import PyMongo
+from pymongo import MongoClient
 
-# Initialize the Flask application
-app = Flask(__name__)
+app = Flask(__name__) #initialize flask
+mongo = PyMongo(app) #initialize mongo
 
-# This is the path to the upload directory
-app.config['UPLOAD_FOLDER'] = 'static/uploads'
-# These are the extension that we are accepting to be uploaded
-app.config['ALLOWED_EXTENSIONS'] = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+client = MongoClient()
+db = client.tododb
+
+hashValue = str(uuid.uuid4())
+
+app.config['UPLOAD_FOLDER'] = 'static/uploads' #upload directory
+app.config['ALLOWED_EXTENSIONS'] = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif']) #valid extensions
 
 # For a given file, return whether it's an allowed type or not
 def allowed_file(filename):
@@ -27,14 +27,19 @@ def allowed_file(filename):
 @app.route('/')
 def index():
     print("/")
-    return render_template('index.html')
+    online_users = mongo.db.users.find({'online': True})
+    BASE_DIR = 'static'
+    abs_path = os.path.join(BASE_DIR, 'uploads')
+    path = "uploads"
+    files = os.listdir(abs_path)
+    return render_template('index.html', files=files, path=path, online_users=online_users)
 
 
 # Route that will process the file upload
 @app.route('/uploads', methods=['POST'])
 def upload():
     print("/uploads - start")
-    hashValue = str(uuid.uuid4())
+    #hashValue = str(uuid.uuid4())
     uploadFolder = app.config['UPLOAD_FOLDER']
     os.mkdir(str(uploadFolder)+"/"+str(hashValue))
 
@@ -73,6 +78,20 @@ def uploaded_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'],
                                filename)
 
+@app.route('/new', methods=['POST'])
+def new():
+    item_doc = {
+        '_id': hashValue,
+        'name':request.form['name'],
+        'description': request.form['description']
+    }
+    db.tododb.insert_one(item_doc)
+    #find = db.tododb.find(request.form['name'])
+    #print(find)
+    _items = db.tododb.find()
+    print(_items)
+    items = [item for item in _items]
+    return render_template('new.html',items=items)
 
 if __name__ == '__main__':
     app.run(
