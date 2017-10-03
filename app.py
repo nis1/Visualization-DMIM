@@ -93,6 +93,12 @@ def delete(id):
     #return render_template('imageSeek.html', files=files, path=path)
 
 
+@app.route('/analyze',methods=['POST','GET'])
+def analyze():
+    print('--> HTTP PAGE: /analyze')
+    return render_template('analyze.html')
+
+
 if __name__ == '__main__':
     app.run(
         host="0.0.0.0",
