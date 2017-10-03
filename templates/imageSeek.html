@@ -16,23 +16,19 @@
       <a class="navbar-brand" href="#"></a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="/">PySAAS</a></li>
-      <li><a href="/storedCases">Stored cases</a></li>
+      <li><a href="/">PySAAS</a></li>
+      <li class="active"><a href="/storedCases">Stored cases</a></li>
       <li><a href="/uploadNew">Upload new case</a></li>
       <li><a href="#">Analyze</a></li>
     </ul>
   </div>
 </nav>
 
-
-  <div class="container">
-   <div class="header">
-       <h3 class="text-muted">Welcome to PySAAS</h3>
-   </div>
-   <hr/>
-   <div>
-
-  <h5>This web application will let you analyze medical cases easily and efficiently</h5>
+  <ul>
+    {% for file in files %}
+      <li><a href="{{path}}/{{file}}/">{{file}}</a></li>
+    {% endfor %}
+</ul>
 
 
  </body>

@@ -16,24 +16,39 @@
       <a class="navbar-brand" href="#"></a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="/">PySAAS</a></li>
-      <li><a href="/storedCases">Stored cases</a></li>
+      <li><a href="/">PySAAS</a></li>
+      <li class="active"><a href="/storedCases">Stored cases</a></li>
       <li><a href="/uploadNew">Upload new case</a></li>
       <li><a href="#">Analyze</a></li>
     </ul>
   </div>
 </nav>
 
-
   <div class="container">
    <div class="header">
-       <h3 class="text-muted">Welcome to PySAAS</h3>
+    <h3 class="text-muted">Stored cases:</h3>
+   </div>
    </div>
    <hr/>
-   <div>
 
-  <h5>This web application will let you analyze medical cases easily and efficiently</h5>
+  <div class="container">
+ <div class="header">
 
+   <ul>
+    {% if items == 0 %}
+    <h4>The database is empty</h4>
+    {% else %}
+    {% for item in items %}
+    <p> <strong>Name: </strong> {{ item.firstName + ' ' + item.lastName }} </p>
+    <p> <strong>ID: </strong> <a href="{{ uploadFolder + '/' + item._id }}"> {{ item._id }} </a></p>
+    <p><a href="{{ '/delete' + '/' + item._id }}">Delete</a></p>
+    <hr/>
+    {% endfor %}
+    {% endif %}
+   </ul>
+
+  </div>
+ </div>
 
  </body>
 </html>
