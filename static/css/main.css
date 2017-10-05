@@ -1,4 +1,4 @@
-/* 
+/*
  * General
  */
 
@@ -13,9 +13,9 @@ body {
 }
 
 h2 {
-  
+
   font-weight: 300;
-  
+
   letter-spacing: -1.2px;
 }
 
@@ -87,7 +87,7 @@ a {
 
 
 
-/* 
+/*
  * Header
  */
 
@@ -132,7 +132,7 @@ header {
 
 
 /*
- * Hero section 
+ * Hero section
  */
 
 .hero-section .section-content {
@@ -151,7 +151,7 @@ header {
 
 /*
  * Sign up
- */ 
+ */
 
 .signup-section .section-content h2 {
   font-size: 30px;
@@ -205,7 +205,7 @@ header {
 
 /*
  * Sign up
- */ 
+ */
 
 .about-section h2 {
   font-size: 30px;
@@ -217,7 +217,7 @@ header {
 }
 
 
-/* 
+/*
  * Home
  */
 
@@ -233,7 +233,7 @@ header {
 
 .section-tabs .places a,
 .section-tabs .places a:visited {
-  color: #3372df; 
+  color: #3372df;
 }
 
 
@@ -286,3 +286,4 @@ header {
 .leaflet-popup-content p {
   margin: 10px 0 ;
 }
+

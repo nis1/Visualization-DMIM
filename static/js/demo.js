@@ -5,6 +5,7 @@
 
 'use strict';
 
+
 /* globals dat, AMI*/
 
 // VJS classes we will be using in this lesson
@@ -97,6 +98,9 @@ function gui(stackHelper) {
 /**
  * Start animation loop
  */
+//console.log("JSON------>");
+//console.log(document.currentScript.getAttribute('jsonPath'));
+
 function animate() {
   controls.update();
   renderer.render(scene, camera);
@@ -111,19 +115,16 @@ animate();
 // Setup loader
 var loader = new LoadersVolume(container);
 
-//var t2 = ['36444280', '36444294', '36444308', '36444322', '36444336', '36444350', '36444364', '36444378', '36444392', '36444406', '36444434', '36444448', '36444462', '36444476', '36444490', '36444504', '36444518', '36444532', '36746856'];
-var t2 = ['sssssssssssssssssssss.dcm','img_000.dcm','img_001.dcm','img_002.dcm','img_003.dcm','img_004.dcm','img_005.dcm','img_006.dcm','img_007.dcm','img_008.dcm','img_009.dcm','img_010.dcm','img_011.dcm','img_012.dcm','img_013.dcm','img_014.dcm','img_015.dcm','img_016.dcm','img_017.dcm','img_018.dcm','img_019.dcm','img_020.dcm','img_021.dcm','img_022.dcm','img_023.dcm',];
+
+
+var t2 = parsed;
+console.log(t2)
 var files = t2.map(function (v) {
 
-  //return 'https://cdn.rawgit.com/FNNDSC/data/master/dicom/adi_brain/' + v;
-   return '../static/uploads/dicom/br_153/' + v;
+   return path + v;
 });
 
-console.log('Files:')
-//console.log(_getAllFilesFromFolder('/'))
-//var fs = require('fs');
-//var files = fs.readdirSync('/');
-console.log(files)
+
 
 loader.load(files).then(function () {
   // merge files into clean series/stack/frame structure

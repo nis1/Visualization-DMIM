@@ -41,6 +41,7 @@
     {% for item in items %}
     <p> <strong>Name: </strong> {{ item.firstName + ' ' + item.lastName }} </p>
     <p> <strong>ID: </strong> <a href="{{ uploadFolder + '/' + item._id }}"> {{ item._id }} </a></p>
+    <p><a href="{{ '/analyze/' + item._id}}" style="color: #ff0000"><strong>ANALYZE</strong></a></p>
     <p><a href="{{ '/delete' + '/' + item._id }}">Delete</a></p>
     <hr/>
     {% endfor %}

@@ -1,6 +1,8 @@
 import os
 import uuid
 import shutil
+import json
+import os.path
 from flask import Flask, render_template, request, redirect, url_for, send_from_directory
 from werkzeug import secure_filename
 from flask_pymongo import PyMongo
@@ -51,12 +53,7 @@ def uploadNew():
 @app.route('/uploadDone', methods=['POST','GET'])
 def uploadDone():
     hashValue = str(uuid.uuid4()) #create a unique hash (or id)
-    item_doc = { #JSON to store in mongodb
-        '_id': hashValue,
-        'firstName':request.form['firstName'],
-        'lastName': request.form['lastName']
-    }
-    db.pysaas.insert_one(item_doc) #store the data
+
 
     os.mkdir(str(uploadFolder)+"/"+str(hashValue)) #make a new folder in static named "uploadFolder"/"hashValue"
 
@@ -64,17 +61,33 @@ def uploadDone():
     print(request.files.getlist("file[]"))
     filenames = []
 
+    filesJSON = { #JSON to store in mongodb
+        '_id': hashValue,
+        'fileName': '',
+        'firstName': request.form['firstName'],
+        'lastName': request.form['lastName']
+    }
+
+    print("Uploaded files:")
     for file in uploaded_files:
-        print(str(file))
+
         if file:
             filename = secure_filename(file.filename)
             file.save(os.path.join(str(uploadFolder)+"/"+str(hashValue), filename))
             filenames.append(filename)
-            print(filename)
 
+    filesJSON['fileName'] = filenames
+
+    print("filesJSON:")
+    print(filesJSON['fileName'])
+
+    db.pysaas.insert_one(filesJSON) #store the data
+   # print("filesJSON:" + "\n" + str(filesJSON))
+
+    with open(os.path.join(uploadFolder + '/' + hashValue + '/', "data.JSON"), 'w') as outfile:
+        json.dump(filesJSON, outfile, ensure_ascii=False)
 
     return render_template('uploadDone.html', filenames=filenames, hashValue = hashValue, uploadFolder = str(uploadFolder))
-
 
 
 @app.route('/static/uploads/<path>', methods=['GET'])
@@ -93,11 +106,19 @@ def delete(id):
     #return render_template('imageSeek.html', files=files, path=path)
 
 
-@app.route('/analyze',methods=['POST','GET'])
-def analyze():
-    print('--> HTTP PAGE: /analyze')
-    return render_template('analyze.html')
+@app.route('/analyze/<hashId>',methods=['POST','GET'])
+def analyze(hashId):
+    print('--> HTTP PAGE: /analyze/' + str(hashId))
+    with open( uploadFolder + '/' + hashId + '/' + 'data.json') as data_file:
+        data = json.load(data_file)
+    path = '../' + uploadFolder + '/' + hashId +'/'
+    print(path)
+    #print('"{}"'.format(data["fileName"]))
+    return render_template('analyze.html',fileName=json.dumps(data["fileName"]),path=path)
 
+@app.route('/analyze',methods=['GET'])
+def test():
+    return render_template('analyzeRedirect.html')
 
 if __name__ == '__main__':
     app.run(

@@ -35,20 +35,26 @@
     </div>
     <ul class="nav navbar-nav">
       <li><a href="/">PySAAS</a></li>
-      <li class="active"><a href="/storedCases">Stored cases</a></li>
+      <li><a href="/storedCases">Stored cases</a></li>
       <li><a href="/uploadNew">Upload new case</a></li>
-      <li><a href="/analyze">Analyze</a></li>
+      <li class="active"><a href="/analyze">Analyze</a></li>
     </ul>
   </div>
 </nav>
 
 
-
-
 <div id="my-gui-container"></div>
 <div id="container"></div>
-<script type="text/javascript" src="/static/js/demo.js"></script>
 
+<div id="code" fileName="{{ fileName }}">
+<script type="text/javascript" charset="utf-8">
+
+var parsed = JSON.parse({{fileName|tojson|safe}});
+var path = "{{ path }}";
+console.log(path);
+</script>
+<script type="text/javascript" src="/static/js/demo.js"> </script>
+</div>
 
 </body>
 
