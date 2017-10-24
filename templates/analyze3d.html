@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+
+  <script type="text/javascript" src="http://get.goxtk.com/xtk_edge.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+
+      <script type="text/javascript" src="http://get.goxtk.com/xtk_xdat.gui.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="/static/css/quadview.css">
+
+
+  <title>Analyze 3D</title>
+
+
+
+<script type="text/javascript" src="/static/js/quadview.js"></script>
+
+</head>
+
+<body>
+  <div id="code" fileName="{{ fileName }}">
+<script type="text/javascript" charset="utf-8">
+    var parsed = JSON.parse({{fileName|tojson|safe}});
+    var path = "{{ path }}";
+    console.log(path);
+</script>
+
+  <!-- the container for the renderers -->
+<div id="3d" style="background-color: #000; width: 100%; height: 70%; margin-bottom: 2px;"></div>
+<div id="sliceX" style="border-top: 2px solid yellow; background-color: #000; width: 33.3%; height: 30%; float: left;"></div>
+<div id="sliceY" style="border-top: 2px solid red;background-color: #000; width: 33.3%; height: 30%; float: left;"></div>
+<div id="sliceZ" style="border-top: 2px solid green; background-color: #000; width: 33.3%; height: 30%; float: left;"></div>
+
+  <script>
+  // tell the embed parent frame the height of the content
+  if (window.parent && window.parent.parent){
+    window.parent.parent.postMessage(["resultsFrame", {
+      height: document.body.getBoundingClientRect().height,
+      slug: "wsa8dja0"
+    }], "*")
+  }
+</script>
+</div>
+</body>
+
+</html>
+
