@@ -19,7 +19,8 @@
       <li><a href="/">PySAAS</a></li>
       <li class="active"><a href="/storedCases">Stored cases</a></li>
       <li><a href="/uploadNew">Upload new case</a></li>
-      <li><a href="/analyze">Analyze</a></li>
+      <li><a href="/analyze">3D Analysis</a></li>
+      <li><a href="/analyzeex">Slice Analysis</a></li>
     </ul>
   </div>
 </nav>
@@ -41,7 +42,8 @@
     {% for item in items %}
     <p> <strong>Name: </strong> {{ item.firstName + ' ' + item.lastName }} </p>
     <p> <strong>ID: </strong> <a href="{{ uploadFolder + '/' + item._id }}"> {{ item._id }} </a></p>
-    <p><a href="{{ '/analyze/' + item._id}}" style="color: #ff0000"><strong>ANALYZE</strong></a></p>
+    <p><a href="{{ '/analyze/' + item._id}}" style="color: #ff0000"><strong>3D Analysis</strong></a>
+    &nbsp;&nbsp;&nbsp;<a href="{{ '/analyzeex/' + item._id}}" style="color: #a00000"><strong> Slice Analysis</strong></a></p>
     <p><a href="{{ '/delete' + '/' + item._id }}">Delete</a></p>
     <hr/>
     {% endfor %}

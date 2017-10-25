@@ -117,8 +117,12 @@ def analyze(hashId):
     return render_template('analyze.html',fileName=json.dumps(data["fileName"]),path=path)
 
 @app.route('/analyze',methods=['GET'])
-def test():
+def redirect1():
     return render_template('analyzeRedirect.html')
+
+@app.route('/analyzeex',methods=['GET'])
+def redirect2():
+    return render_template('analyzeRedirect2.html')
 
 @app.route('/analyzeex/<hashId>', methods=['POST','GET'])
 def analyzeex(hashId):
