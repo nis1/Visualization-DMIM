@@ -1,7 +1,9 @@
-    html, body {
-  background-color:#000;
+html,
+body {
+  background-color: #000;
   margin: 0;
   padding: 0;
   height: 100%;
+  border: 6px solid black;
   overflow: hidden !important;
 }

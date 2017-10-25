@@ -60,7 +60,7 @@ console.log("js file: ");
 
 
   volume.file = _dicom.map(function(v) {
-  console.log(path + v);
+  //console.log(path + v);
     // we also add the 'fake' .DCM extension since else wise
     // XTK would think .org is the extension
     return path + v;
@@ -127,6 +127,7 @@ console.log("js file: ");
         volume.range[1] - 1);
     var sliceZController = volumegui.add(volume, 'indexZ', 0,
         volume.range[2] - 1);
+
     volumegui.open();
 
   };
