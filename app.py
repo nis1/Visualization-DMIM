@@ -120,14 +120,14 @@ def analyze(hashId):
 def test():
     return render_template('analyzeRedirect.html')
 
-@app.route('/analyze3d/<hashId>', methods=['POST','GET'])
-def analyze3d(hashId):
-    print('--> HTTP PAGE: /analyze3d/' + str(hashId))
+@app.route('/analyzeex/<hashId>', methods=['POST','GET'])
+def analyzeex(hashId):
+    print('--> HTTP PAGE: /analyzeex/' + str(hashId))
     with open( uploadFolder + '/' + hashId + '/' + 'data.json') as data_file:
         data = json.load(data_file)
     path = '../' + uploadFolder + '/' + hashId +'/'
     print(path)
-    return render_template('analyze3d.html',fileName=json.dumps(data["fileName"]),path=path)
+    return render_template('analyzeex.html',fileName=json.dumps(data["fileName"]),path=path)
     #return render_template('imageSeek.html', files=files, path=path)
 
 
