@@ -50,8 +50,8 @@ console.log("hello from external js");
   // .. and attach the single-file dicom in .NRRD format
   // this works with gzip/gz/raw encoded NRRD files but XTK also supports other
   // formats like MGH/MGZ
-console.log("js file: ");
-
+console.log("js files: ");
+console.log(parsed);
 // var _dicom = ['img_001','img_002','img_003','img_004','img_005','img_006','img_007','img_008'];
 
 // var path = './static/uploads/65409eef-d4dd-4d87-bfdb-62e351fbba73/'
@@ -66,6 +66,7 @@ console.log("js file: ");
     return path + v;
 
   });
+
   // we also attach a label map to show segmentations on a slice-by-slice base
   //volume.labelmap.file = 'http://x.babymri.org/?seg.nrrd';
   // .. and use a color table to map the label map values to colors
