@@ -14,8 +14,7 @@
   <link rel="stylesheet" type="text/css" href="/static/css/quadview.css">
 
 
-  <title>Medical Modeling</title>
-
+  <title>DMIM</title>
 
 
 <script type="text/javascript" src="/static/js/quadview.js"></script>
@@ -26,12 +25,15 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.9.0/bootstrap-slider.min.js"></script>
+
+  <link rel="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.9.0/css/bootstrap-slider.min.css"></head>
 
 
 </head>
 
 <body>
-<div id="code" fileName="{{ fileName }}">
+<div id="code" fileName="{{ fileName }}" style="height: 100%; width: 100%">
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -55,10 +57,47 @@
 
 
   <!-- the container for the renderers -->
-<div id="3d" style="background-color: #000; width: 100%; height: 57%; margin-bottom: 0px;">
+
+<div id="3d" style="background-color: #000; width: 100%; height: 50%; margin-bottom: 0px;">
 
 </div>
+
   <div style="position: relative; bottom: 5px; left: 80px;">
+
+<div id="slidecontainer">
+<style scope>
+#slidecontainer {
+    width: 19.5%;
+    padding-bottom: 3px;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 25px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+</style>
+ Brush size: <span id="brush"></span>
+  <input type="range" min="1" max="15" value="1" id="myRange">
+
+  <script>
+var slider = document.getElementById("myRange");
+var output = document.getElementById("brush");
+output.innerHTML = slider.value;
+
+
+slider.oninput = function() {
+  output.innerHTML = this.value;
+  pad.setLineSize(this.value);
+}
+</script>
+</div>
+
   <button type="button" class="btn btn-secondary btn-sm" onclick="setLineColor('#FF3333')">Red</button>
   <button type="button" class="btn btn-secondary btn-sm" onclick="setLineColor('#FFED3C')">Yellow</button>
   <button type="button" class="btn btn-secondary btn-sm" onclick="setLineColor('#4EFF3C')">Green</button>
@@ -75,6 +114,7 @@
 <script>
     var el = document.getElementById('sketchpad');
     var pad = new Sketchpad(el);
+    pad.setLineSize(document.getElementById("myRange").value);
 
     // setLineColor
     function setLineColor(e) {
@@ -93,37 +133,14 @@
         var size = e.target.value;
         pad.setLineSize(size);
     }
-    //document.getElementById('line-size-input').oninput = setLineSize;
 
-    // undo
-    function undo() {
-        pad.undo();
-    }
-    //document.getElementById('undo').onclick = undo;
-
-    // redo
-    function redo() {
-        pad.redo();
-    }
-    //document.getElementById('redo').onclick = redo;
-
-    // clear
-    function clear() {
-        pad.clear();
-    }
-    //document.getElementById('clear').onclick = clear;
-
-    // resize
-    window.onresize = function (e) {
-      pad.resize(el.offsetWidth);
-    }
   </script>
 
 </div>
 
 <div id="sliceY" style="border-top: 6px solid green; border-right: 0px solid white; border-left: 0px solid white; background-color: #000; width: 33.3%; height: 30%; float: left;"></div>
 <div id="sliceZ" style="border-top: 6px solid blue; background-color: #000; width: 33.3%; height: 30%; float: left;"></div>
-</div>
+
 
 </body>
 
