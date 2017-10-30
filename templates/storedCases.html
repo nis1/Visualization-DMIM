@@ -3,11 +3,11 @@
  <head>
   <title>DMIM</title>
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="https://github.com/makeusabrew/bootbox/releases/download/v4.4.0/bootbox.min.js">
-</script>
+<!-- BOOTSTRAP JQUERY  -->
+<link rel="stylesheet" href="/static/css/bootstrap/bootstrap.min.css">
+<script src="/static/js/jquery/jquery.min.js"></script>
+<script src="/static/js/bootstrap/bootstrap.min.js"></script>
+
  </head>
  <body>
 
@@ -44,7 +44,7 @@
     <p> <strong>Name: </strong> {{ item.firstName + ' ' + item.lastName }} </p>
 
     <div style="display: inline-block;">
-    <p> <strong>ID: </strong> <a href="{{ uploadFolder + '/' + item._id }}"> {{ item._id }} &nbsp &nbsp</a></p></div>
+    <p> <strong>ID: </strong> <a href="{{ uploadFolder + '/' + item._id }}"> {{ item._id }}</a>&nbsp &nbsp</p></div>
 
 
     <button class="btn btn-danger btn-xs" data-href="{{ '/delete' + '/' + item._id }}" data-toggle="modal" data-target="#confirm-delete">
@@ -84,14 +84,6 @@
 
     <p><a href="{{ '/analyze/' + item._id}}" style="color: #ff0000"><button type="button" class="btn btn-primary btn-sm">3D Analysis</button></a>
     &nbsp;&nbsp;&nbsp;<a href="{{ '/analyzeex/' + item._id}}" style="color: #a00000"><button type="button" class="btn btn-primary btn-sm">Slice Analysis</button></a></p>
-
-
-
-<script>
-  $(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-})
-</script>
 
 
     <hr/>

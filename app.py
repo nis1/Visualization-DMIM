@@ -77,7 +77,8 @@ def uploadDone():
 def imageSeek(path):
     print('--> HTTP PAGE: /static/uploads/' + str(path))
     files = os.listdir(os.path.join(uploadFolder, path))
-    return render_template('imageSeek.html', files=files, path=path)
+    value = db.pysaas.find_one({"_id":path});
+    return render_template('imageSeek.html', files=files, path=path, firstName = value['firstName'],lastName = value['lastName'])
 
 
 @app.route('/delete/<id>', methods=['POST','GET'])

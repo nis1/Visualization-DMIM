@@ -14,7 +14,8 @@
 <script src="/static/js/bootstrap/bootstrap.min.js"></script>
 
 
-<link rel="stylesheet" href="/static/css/analyzeex.css">
+<script src="/static/js/responsive-sketchpad/responsive-sketchpad.js" ></script>
+<link rel="stylesheet" href="/static/css/xtk/analyzeex.css">
 
 </head>
 
@@ -76,12 +77,13 @@ slider.oninput = function() {
 
 <div id="sliceX" >
 <div id="sketchpad">
-<script src="/static/js/responsive-sketchpad.js" ></script>
+
 
 <script>
     var el = document.getElementById('sketchpad');
     var pad = new Sketchpad(el);
-
+    var innerdiv = document.getElementById('sketchpad');
+    pad.setCanvasSize((innerdiv.offsetWidth-3),(innerdiv.offsetHeight-3));
     pad.setLineSize(document.getElementById("myRange").value);
 
     // setLineColor
