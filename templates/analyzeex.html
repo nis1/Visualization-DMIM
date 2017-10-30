@@ -8,15 +8,20 @@
 <script type="text/javascript" src="/static/js/xtk/xtk_xdat.gui.js"></script>
 <script type="text/javascript" src="/static/js/xtk/xtk.js"></script>
 
-
+<!-- BOOTSTRAP JQUERY  -->
 <link rel="stylesheet" href="/static/css/bootstrap/bootstrap.min.css">
 <script src="/static/js/jquery/jquery.min.js"></script>
 <script src="/static/js/bootstrap/bootstrap.min.js"></script>
 
+
+<link rel="stylesheet" href="/static/css/analyzeex.css">
+
 </head>
 
-<body style = "background: black; overflow-y: hidden;">
-<div id="code" fileName="{{ fileName }}" style="height: 100%; width: 100%; min-height: 80%; min-width: 1000px;">
+<body>
+
+<div id="code" fileName="{{ fileName }}" >
+
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -32,58 +37,19 @@
   </div>
 </nav>
 
-  <script type="text/javascript" charset="utf-8">
+<script type="text/javascript" charset="utf-8">
     var parsed = JSON.parse({{fileName|tojson|safe}});
     var path = "{{ path }}";
     console.log(path);
 </script>
 
 
-  <!-- the container for the renderers -->
+<div id="3d" style="background-color: #000; width: 100%; height: 50%; margin-bottom: 0px;"></div>
 
-<div id="3d" style="background-color: #000; width: 100%; height: 50%; margin-bottom: 0px;">
-
-</div>
-
-  <div style="position: relative; bottom: 5px; left: 9%; ">
+<div style="position: relative; bottom: 5px; left: 9%; ">
 
 <div id="slidecontainer">
-<style scope>
-#slidecontainer {
-    width:187px;
-    padding-bottom: 3px;
 
-}
-
-.slider {
-    -webkit-appearance: none;
-    width: 100%;
-    height: 20px;
-    background: #363636;
-    outline: none;
-    opacity: 0.7;
-    -webkit-transition: .2s;
-    transition: opacity .2s;
-  }
-.slider:hover {
-    opacity: 1;
-}
-.slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 25px;
-    height: 20px;
-    background: #4F81A4;
-    cursor: pointer;
-}
-
-.slider::-moz-range-thumb {
-    width: 25px;
-    height: 20px;
-    background: #000;
-    cursor: pointer;
-  }
-</style>
  Brush size: <span id="brush"></span>
   <input type="range" min="1" max="15" value="1" id="myRange" class="slider" >
 
@@ -108,10 +74,8 @@ slider.oninput = function() {
   </div>
 
 
-<div id="sliceX" style="border-top: 6px solid red; background-color: #000; width: 33.3%; height: 30%; float: left; position: relative; ">
-
-<div id="sketchpad" style="width: 100%; height: 100%; position: absolute; border: 2px solid white">
-
+<div id="sliceX" >
+<div id="sketchpad">
 <script src="/static/js/responsive-sketchpad.js" ></script>
 
 <script>
@@ -119,7 +83,6 @@ slider.oninput = function() {
     var pad = new Sketchpad(el);
 
     pad.setLineSize(document.getElementById("myRange").value);
-
 
     // setLineColor
     function setLineColor(e) {
@@ -143,8 +106,8 @@ slider.oninput = function() {
 </div>
 </div>
 
-<div id="sliceY" style="border-top: 6px solid green; border-right: 0px solid white; border-left: 0px solid white; background-color: #000; width: 33.3%; height: 30%; float: left;"></div>
-<div id="sliceZ" style="border-top: 6px solid blue; background-color: #000; width: 33.3%; height: 30%; float: left;"></div>
+<div id="sliceY"></div>
+<div id="sliceZ"></div>
 
 
 </body>
