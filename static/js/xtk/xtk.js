@@ -1,15 +1,6 @@
 
 window.onload = function() {
-console.log("hello from external js");
-  // the DICOM files
-  //
-  // this is a brain MR with dimensions 26x256x148 vx
-  // some slices were removed to get the 'look-into-the-brain' effect
 
-
-  //
-  // try to create the 3D renderer
-  //
   _webGLFriendly = true;
   try {
     // try to create and initialize a 3D renderer

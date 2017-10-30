@@ -32,19 +32,66 @@
     <h3 class="text-muted">Please choose files to upload</h3>
    </div>
  </div>
+<hr/>
+<script>
 
-   <hr/>
+  $(function() {
+
+  // We can attach the `fileselect` event to all file inputs on the page
+  $(document).on('change', ':file', function() {
+    var input = $(this),
+        numFiles = input.get(0).files ? input.get(0).files.length : 1,
+        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+    input.trigger('fileselect', [numFiles, label]);
+  });
+
+  // We can watch for our custom `fileselect` event like this
+  $(document).ready( function() {
+      $(':file').on('fileselect', function(event, numFiles, label) {
+
+          var input = $(this).parents('.input-group').find(':text'),
+              log = numFiles > 1 ? numFiles + ' files selected' : label;
+
+          if( input.length ) {
+              input.val(log);
+          } else {
+              if( log ) alert(log);
+          }
+
+      });
+  });
+
+});
+
+</script>
 
     <div class="container">
    <p>Enter first and last name of the case:</p>
    <form action="/uploadDone" method="post" enctype="multipart/form-data" class="uploadFiles">
-  <input type="text" name="firstName" placeholder="First name" required></input>
-  <input type="text" name="lastName" placeholder="Last name" required></input><br><br>
-   <input type="file" multiple="" name="file[]" class="uploadFiles"></input>
- <hr/>
-    <input type="submit" value="Upload" class="uploadFiles">
+  <input type="text" name="firstName" placeholder="First name" required style="height: 35px"></input>
+  <input type="text" name="lastName" placeholder="Last name" required style="height: 35px"></input><br><br>
+
+
+
+
+
+            <div class="input-group" style="width: 307px">
+                <label class="input-group-btn">
+                    <span class="btn btn-primary">
+                        Browse&hellip; <input type="file" name="file[]" class="uploadFiles" style="display: none;" multiple>
+                    </span>
+                </label>
+                <input type="text" class="form-control"  name="file[]" readonly>
+            </div>
+<hr/>
+ <button type="submit" class="btn btn-primary">Submit</button>
+
    </form>
    </div>
+
+
+
+
 
 
 <!--

@@ -1,30 +1,23 @@
 
 <html>
 <head>
-	 <meta charset="UTF-8">
+<meta charset="UTF-8">
 <title>DMIM</title>
 
-<link rel="stylesheet" type="text/css" href="/static/css/demo.css">
-
-<!-- Tools -->
-<script src="https://use.edgefonts.net/source-code-pro.js"></script>
-<script type="text/javascript" src="https://cdn.rawgit.com/dataarts/dat.gui/master/build/dat.gui.min.js"></script>
-<script type="text/javascript" src="https://cdn.rawgit.com/mrdoob/stats.js/master/build/stats.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.16.0/polyfill.min.js"></script>
-
 <!-- THREEJS -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/three.js/87/three.min.js"></script>
+<script type="text/javascript" src="/static/js/ami/three.min.js"></script>
 
+<!-- AMI -->
+<script type="text/javascript" src="/static/js/ami/dat.gui.min.js"></script>
+<script type="text/javascript" src="/static/js/ami/ami.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/static/css/ami/styleAmi.css">
 
-<!-- AMI BUILD -->
-<script type="text/javascript" src="/static/js/ami.min.js"></script>
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- BOOTSTRAP JQUERY  -->
+<link rel="stylesheet" href="/static/css/bootstrap/bootstrap.min.css">
+<script src="/static/js/jquery/jquery.min.js"></script>
+<script src="/static/js/bootstrap/bootstrap.min.js"></script>
 
 </head>
-
 
 <body style="overflow-y: hidden">
 
@@ -43,21 +36,18 @@
   </div>
 </nav>
 
-
 <div id="my-gui-container"></div>
 <div id="container"></div>
-
 <div id="code" fileName="{{ fileName }}">
-<script type="text/javascript" charset="utf-8">
 
-var parsed = JSON.parse({{fileName|tojson|safe}});
-var path = "{{ path }}";
-console.log(path);
-</script>
-<script type="text/javascript" src="/static/js/demo.js"> </script>
+  <script type="text/javascript" charset="utf-8">
+    var parsed = JSON.parse({{fileName|tojson|safe}});
+    var path = "{{ path }}";
+    console.log(path);
+  </script>
+  <script type="text/javascript" src="/static/js/demo.js"> </script>
+
 </div>
-
 </body>
-
 </html>
 
