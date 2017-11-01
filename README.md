@@ -2,15 +2,8 @@
 
 Nowadays, patients are sent to MRI, PET, and CT scans more than before. Each scan produces a large amount of information of a patient, normally as a set of 2D slices, that will be inspected by a doctor or a technician. The project aims to visualize any DICOM images by creating a 3D model in addition to the classic slice-by-slice inspection.
 
-In this project, the following external libraries are used:
-
-The X ToolKit:
-https://github.com/xtk/X
-
-AMI: 
-https://github.com/FNNDSC/ami
-
-## Installation tutorial
+&nbsp;
+## Installation
 
 This tutorial uses Conda and PIP. Please make sure to install them before you  proceed the next steps.
 
@@ -47,21 +40,33 @@ $ FLASK_APP=app.py FLASK_DEBUG=1 python -m flask run
 ```
 8. The website should be available at http://localhost:5000/
 
-A succefull installation will result in the following index page: 
+A successful installation will result in the following index page: 
 
-![Home Page](https://github.com/nis1/Visualization-DMIM/blob/master/static/wiki/4.jpg)
-
+<kbd>![Home Page](https://github.com/nis1/Visualization-DMIM/blob/master/static/wiki/4.jpg)</kbd>
+&nbsp;
 
 ## More images from the app
 
 #### Store and analyze various cases
-![Store and analyze various cases](https://github.com/nis1/Visualization-DMIM/blob/master/static/wiki/5.jpg)
+<kbd>![Store and analyze various cases](https://github.com/nis1/Visualization-DMIM/blob/master/static/wiki/5.jpg)</kbd>
+&nbsp;
 
 #### 3D Analysis
-![3D Analysis](https://github.com/nis1/Visualization-DMIM/blob/master/static/wiki/8.jpg)
+<kbd>![3D Analysis](https://github.com/nis1/Visualization-DMIM/blob/master/static/wiki/8.jpg)</kbd>
+&nbsp;
 
 #### Slice Analysis
-![Slice Analysis](https://github.com/nis1/Visualization-DMIM/blob/master/static/wiki/10.jpg)
+<kbd>![Slice Analysis](https://github.com/nis1/Visualization-DMIM/blob/master/static/wiki/10.jpg)</kbd>
+&nbsp;
 
 #### Draw on slices
-![Draw on slices](https://github.com/nis1/Visualization-DMIM/blob/master/static/wiki/11.jpg)
+<kbd>![Draw on slices](https://github.com/nis1/Visualization-DMIM/blob/master/static/wiki/11.jpg)</kbd>
+&nbsp;
+
+## References
+
+The X ToolKit:
+https://github.com/xtk/X
+
+AMI: 
+https://github.com/FNNDSC/ami
