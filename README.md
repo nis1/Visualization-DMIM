@@ -43,7 +43,7 @@ $ FLASK_APP=app.py FLASK_DEBUG=1 python -m flask run
 A successful installation will result in the following index page: 
 
 <kbd>![Home Page](https://github.com/nis1/Visualization-DMIM/blob/master/static/wiki/4.jpg)</kbd>
-&nbsp;
+&nbsp;&nbsp;
 
 ## More images from the app
 
