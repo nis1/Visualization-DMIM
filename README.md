@@ -1,4 +1,4 @@
-## **DICOM 3D Medical Image Modeling (DMIM)**
+## DICOM 3D Medical Image Modeling (DMIM)
 
 Nowadays, patients are sent to MRI, PET, and CT scans more than before. Each scan produces a large amount of information of a patient, normally as a set of 2D slices, that will be inspected by a doctor or a technician. The project aims to visualize any DICOM images by creating a 3D model in addition to the classic slice-by-slice inspection.
 
@@ -61,7 +61,8 @@ A successful installation will result in the following index page:
 
 #### Draw on slices
 <kbd>![Draw on slices](https://github.com/nis1/Visualization-DMIM/blob/master/static/wiki/11.jpg)</kbd>
-&nbsp;
+&nbsp;&nbsp;
+
 
 ## References
 
