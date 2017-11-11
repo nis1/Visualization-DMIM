@@ -2,6 +2,9 @@
 
 Nowadays, patients are sent to MRI, PET, and CT scans more than before. Each scan produces a large amount of information of a patient, normally as a set of 2D slices, that will be inspected by a doctor or a technician. The project aims to visualize any DICOM images by creating a 3D model in addition to the classic slice-by-slice inspection.
 
+Demo:
+https://www.youtube.com/watch?v=Xz3xwpmoMHg
+
 &nbsp;
 ## Installation
 
